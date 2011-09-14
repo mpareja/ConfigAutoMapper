@@ -14,7 +14,7 @@ namespace ConfigAutoMapper.Tests
 			var value = "test1";
 			ConfigurationManager.AppSettings[key] = value;
 
-			var source = new AppSettingConfigSource();
+			var source = new AppSettingsConfigSource();
 			Assert.AreEqual(value, source.Get(key));
 		}
 
@@ -25,21 +25,21 @@ namespace ConfigAutoMapper.Tests
 			var value = "test2";
 			ConfigurationManager.AppSettings[key] = value;
 
-			var source = new AppSettingConfigSource();
+			var source = new AppSettingsConfigSource();
 			Assert.AreEqual(value, source.Get(key));
 		}
 
 		[Test]
 		public void returns_null_for_settings_that_dont_exist()
 		{
-			var source = new AppSettingConfigSource();
+			var source = new AppSettingsConfigSource();
 			Assert.IsNull(source.Get("SettingThatDoesntExist"));
 		}
 
 		[Test]
 		public void can_query_for_setting_in_App_Config_file()
 		{
-			var source = new AppSettingConfigSource();
+			var source = new AppSettingsConfigSource();
 			Assert.AreEqual("AppConfigSettingValue", source.Get("AppConfigSetting"));
 		}
 	}

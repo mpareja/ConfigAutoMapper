@@ -10,7 +10,7 @@ namespace ConfigAutoMapper
 		private readonly ConfigValueConverter _converter = new ConfigValueConverter();
 		private readonly IConfigSource _configSource;
 
-		public ConfigAutoMapper() : this(new AppSettingConfigSource()) {}
+		public ConfigAutoMapper() : this(new AppSettingsConfigSource()) {}
 
 		public ConfigAutoMapper(IConfigSource configSource)
 		{

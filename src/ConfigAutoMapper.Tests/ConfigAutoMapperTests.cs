@@ -124,8 +124,6 @@ namespace ConfigAutoMapper.Tests
 			{
 				return ProtectedSetting;
 			}
-
-
 		}
 	}
 }
