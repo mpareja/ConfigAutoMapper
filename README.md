@@ -11,7 +11,7 @@ Here is a sample configuration object:
 
 	public class AppConfig {
 		public AppConfig() {
-			# default values
+			// default values
 			DataDir = "data";
 			RetryCount = 5;
 		}
@@ -20,7 +20,7 @@ Here is a sample configuration object:
 		public int RetryCount { get; set; }	
 		protected string RawSiteId { get; set; } // field is mapped
 
-		# not mapped, but depends on mapped field
+		// not mapped, but depends on mapped field
 		public string SiteId { get { return RawSiteId.Substring(0,5); } }
 	}
 
@@ -30,7 +30,7 @@ Below is a sample configuration file using the AppSettingsConfigSource. Note the
 	<configuration>
 		<appSettings>
 			<add key="App.DataDir" value="mydata" />
-			<add key="App.RetryCount" value="5" />
+			<add key="App.RetryCount" value="7" />
 			<add key="App.RawSiteId" value="MySite_5312312" />
 		</appSettings>
 	</configuration>
