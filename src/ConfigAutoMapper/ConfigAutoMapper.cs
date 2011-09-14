@@ -5,14 +5,14 @@ using System.Reflection;
 
 namespace ConfigAutoMapper
 {
-	public class ConfigAutoMapper
+	public class ConfigMapper
 	{
 		private readonly ConfigValueConverter _converter = new ConfigValueConverter();
 		private readonly IConfigSource _configSource;
 
-		public ConfigAutoMapper() : this(new AppSettingsConfigSource()) {}
+		public ConfigMapper() : this(new AppSettingsConfigSource()) {}
 
-		public ConfigAutoMapper(IConfigSource configSource)
+		public ConfigMapper(IConfigSource configSource)
 		{
 			_configSource = configSource;
 		}

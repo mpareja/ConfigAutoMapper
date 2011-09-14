@@ -94,14 +94,14 @@ namespace ConfigAutoMapper.Tests
 			return mapper.Load<T>();
 		}
 
-		private ConfigAutoMapper GetConfigAutoMapper()
+		private ConfigMapper GetConfigAutoMapper()
 		{
-			return new ConfigAutoMapper(new DictionaryConfigSource());
+			return new ConfigMapper(new DictionaryConfigSource());
 		}
 
-		private ConfigAutoMapper GetConfigAutoMapper(IConfigSource configSource)
+		private ConfigMapper GetConfigAutoMapper(IConfigSource configSource)
 		{
-			return new ConfigAutoMapper(configSource);
+			return new ConfigMapper(configSource);
 		}
 
 		public class StuffConfig
