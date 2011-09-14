@@ -4,8 +4,8 @@ ConfigAutoMapper performs a basic mapping of configuration settings to plain-old
 # Sample
 This is how you can load a configuration object:
 
-var mapper = new ConfigAutoMapper(new AppSettingsConfigSource());
-var config = mapper.Load<AppConfig>();
+	var mapper = new ConfigAutoMapper(new AppSettingsConfigSource());
+	var config = mapper.Load<AppConfig>();
 
 Here is a sample configuration object:
 
