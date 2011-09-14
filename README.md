@@ -37,8 +37,9 @@ Below is a sample configuration file using the AppSettingsConfigSource. Note the
 
 # Future
 This currently fulfills my needs, but I could imagine adding more settings:
+
 * Allow configuring what ConfigSource to use for a configuration object.
 * Support nested configuration objects.
 * Collection support.
-* See if it is feasible to lean on [AutoMapper][http://automapper.org].
+* See if it is feasible to lean on [AutoMapper](http://www.automapper.org).
 
