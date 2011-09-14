@@ -24,14 +24,14 @@ Here is a sample configuration object:
 		public string SiteId { get { return RawSiteId.Substring(0,5); } }
 	}
 
-Here is a sample configuration file using the AppSettingsConfigSource:
+Below is a sample configuration file using the AppSettingsConfigSource. Note the "Config" suffix is automatically stripped out:
 
 	<?xml version="1.0" encoding="utf-8" ?>
 	<configuration>
 		<appSettings>
-			<add key="DataDir" value="mydata" />
-			<add key="RetryCount" value="5" />
-			<add key="RawSiteId" value="MySite_5312312" />
+			<add key="App.DataDir" value="mydata" />
+			<add key="App.RetryCount" value="5" />
+			<add key="App.RawSiteId" value="MySite_5312312" />
 		</appSettings>
 	</configuration>
 
