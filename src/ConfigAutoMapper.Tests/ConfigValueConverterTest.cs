@@ -28,6 +28,14 @@ namespace ConfigAutoMapper.Tests
 			AssertValueConversion("0", false);
 		}
 
+		[Test]
+		public void converts_arrays()
+		{
+			AssertValueConversion ("1,2,3,4", new[] { 1, 2, 3, 4 });
+			AssertValueConversion ("1,2,3,4", new[] { "1", "2", "3", "4" });
+			AssertValueConversion ("true,false,1,0", new[] { true, false, true, false });
+		}
+
 		private void AssertValueConversion<T>(string setting, T expected)
 		{
 			var converter = new ConfigValueConverter();
