@@ -24,6 +24,9 @@ namespace ConfigAutoMapper
 		}
 		private static object ConvertArray<T>(string arg, Func<string, T> conversion)
 		{
+			if (string.IsNullOrEmpty(arg))
+				return new T[0];
+
 			var pieces = arg.Split(',');
 			var rg = new T[pieces.Length];
 			for (var i = 0; i < pieces.Length; i++)
