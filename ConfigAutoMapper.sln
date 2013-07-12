@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigAutoMapper", "src\ConfigAutoMapper\ConfigAutoMapper.csproj", "{E2DE1E01-67E9-4437-BB6D-688CB0443E22}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigAutoMapper.Tests", "src\ConfigAutoMapper.Tests\ConfigAutoMapper.Tests.csproj", "{38EAFD2D-ECA7-4CE0-9ED2-1B07E020C81E}"
