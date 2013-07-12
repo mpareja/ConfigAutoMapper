@@ -34,3 +34,20 @@ SET VERSION=net45& SET FWV=v4.5
 %NUNIT% %OUTDIR%\%VERSION%\ConfigAutoMapper.Tests.dll /framework=%FWV% /xml=%TEST_RESULTS%\ConfigAutoMapper.%VERSION%.xml
 
 echo Generate NuGet package
+
+SET VERSION=net35
+mkdir %OUTDIR%\package\lib\%VERSION%
+copy %OUTDIR%\%VERSION%\ConfigAutoMapper.dll %OUTDIR%\package\lib\%VERSION%\
+
+SET VERSION=net40
+mkdir %OUTDIR%\package\lib\%VERSION%
+copy %OUTDIR%\%VERSION%\ConfigAutoMapper.dll %OUTDIR%\package\lib\%VERSION%\
+
+SET VERSION=net45
+mkdir %OUTDIR%\package\lib\%VERSION%
+copy %OUTDIR%\%VERSION%\ConfigAutoMapper.dll %OUTDIR%\package\lib\%VERSION%\
+
+pushd %OUTDIR%\package
+copy ..\..\ConfigAutoMapper.nuspec .
+..\..\.nuget\NuGet.exe pack ConfigAutoMapper.nuspec
+popd

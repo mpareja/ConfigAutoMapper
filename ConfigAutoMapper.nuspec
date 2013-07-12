@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ConfigAutoMapper</id>
+    <version>0.1.0</version>
+    <authors>mpareja</authors>
+    <owners>mpareja</owners>
+    <licenseUrl>https://github.com/mpareja/ConfigAutoMapper/blob/master/LICENSE</licenseUrl>
+	<projectUrl>https://github.com/mpareja/ConfigAutoMapper</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Simple auto-mapping of configuration settings to POCOs.</description>
+    <copyright>Copyright 2011</copyright>
+    <tags>auto-mapping configuration appsettings</tags>
+  </metadata>
+</package>
