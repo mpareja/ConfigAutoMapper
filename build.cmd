@@ -1,5 +1,8 @@
 @echo off
 set OUTDIR=%~dp0build_output
+SET MSBUILD_ARGUMENTS=ConfigAutoMapper.sln  /t:Clean;Build /p:Configuration=Release "/p:Platform=Any CPU" /v:m
+set NUNIT=packages\NUnit.Runners.2.6.2\tools\nunit-console.exe
+set TEST_RESULTS=build_output\test_results
 
 rem Try to find the highest version of MSBuild available...
 set MSBUILD=%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\msbuild.exe
@@ -10,13 +13,24 @@ if not exist %MSBUILD% (
 	exit /b 1
 )
 
-rem Clear out the output directory
+rem Clear out the output directory and generate the test results directory
 rmdir /S /Q "%OUTDIR%"
+mkdir %TEST_RESULTS%
 
-SET MSBUILD_ARGUMENTS=ConfigAutoMapper.sln  /t:Clean;Build /p:Configuration=Release "/p:Platform=Any CPU" /v:m
+rem Install test runner tooling
+.nuget\nuget.exe install .nuget\packages.config -OutputDirectory packages
 
-"%MSBUILD%" %MSBUILD_ARGUMENTS% /p:TargetFrameworkVersion=net20 "/p:OutDir=%OUTDIR%\lib\net20\\"
-"%MSBUILD%" %MSBUILD_ARGUMENTS% /p:TargetFrameworkVersion=net30 "/p:OutDir=%OUTDIR%\lib\net30\\"
-"%MSBUILD%" %MSBUILD_ARGUMENTS% /p:TargetFrameworkVersion=net35 "/p:OutDir=%OUTDIR%\lib\net35\\"
-"%MSBUILD%" %MSBUILD_ARGUMENTS% /p:TargetFrameworkVersion=net40 "/p:OutDir=%OUTDIR%\lib\net40\\"
-"%MSBUILD%" %MSBUILD_ARGUMENTS% /p:TargetFrameworkVersion=net45 "/p:OutDir=%OUTDIR%\lib\net45\\"
+rem Compile and test each supported version
+SET VERSION=net35& SET FWV=v3.5
+"%MSBUILD%" %MSBUILD_ARGUMENTS% /p:TargetFrameworkVersion=%FWV% "/p:OutDir=%OUTDIR%\%VERSION%\\"
+%NUNIT% %OUTDIR%\%VERSION%\ConfigAutoMapper.Tests.dll /framework=%FWV% /xml=%TEST_RESULTS%\ConfigAutoMapper.%VERSION%.xml
+
+SET VERSION=net40& SET FWV=v4.0
+"%MSBUILD%" %MSBUILD_ARGUMENTS% /p:TargetFrameworkVersion=%FWV% "/p:OutDir=%OUTDIR%\%VERSION%\\"
+%NUNIT% %OUTDIR%\%VERSION%\ConfigAutoMapper.Tests.dll /framework=%FWV% /xml=%TEST_RESULTS%\ConfigAutoMapper.%VERSION%.xml
+
+SET VERSION=net45& SET FWV=v4.5
+"%MSBUILD%" %MSBUILD_ARGUMENTS% /p:TargetFrameworkVersion=%FWV% "/p:OutDir=%OUTDIR%\%VERSION%\\"
+%NUNIT% %OUTDIR%\%VERSION%\ConfigAutoMapper.Tests.dll /framework=%FWV% /xml=%TEST_RESULTS%\ConfigAutoMapper.%VERSION%.xml
+
+echo Generate NuGet package
